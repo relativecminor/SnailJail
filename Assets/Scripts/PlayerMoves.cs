@@ -29,13 +29,24 @@ public class PlayerMoves : MonoBehaviour
 
     private void FixedUpdate()
     {
-        body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+        
         if (horizontal != 0 && vertical != 0)
         {
             horizontal *= moveLimiter;
             vertical *= moveLimiter;
         }
-        
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            runSpeed = 7.5f;
+        }
+        else
+        {
+            runSpeed = 5f;
+        }
+
+        body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+
         if (horizontal == -1)
         {
             spriteRend.flipX = true;
