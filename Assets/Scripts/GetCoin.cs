@@ -33,6 +33,8 @@ public class GetCoin : MonoBehaviour
             collide.enabled = false;
             image.enabled = false;
             Destroy(gameObject, sound.clip.length);
+
+            GameManager.Instance.collectCoin();
         }
     }
 
