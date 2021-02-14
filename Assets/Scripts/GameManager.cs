@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        coinText.text = "Coins: ";
+        coinText.text = "Coins: 0";
         coinCount = 0f;
     }
 

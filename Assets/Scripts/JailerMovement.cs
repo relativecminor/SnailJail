@@ -8,6 +8,7 @@ public class JailerMovement : MonoBehaviour
     // 0 is horizontal movement
     // 1 is vertical movement
     // 2 is maybe set to follow the player
+    // 3 is stand still
     public int moveType;
     public float pathLength;
     private float pathTracker;
@@ -43,7 +44,7 @@ public class JailerMovement : MonoBehaviour
         {
             Vertical(pathLength);
         }
-        else
+        else if (moveType == 2)
         {
             Follow();
         }
