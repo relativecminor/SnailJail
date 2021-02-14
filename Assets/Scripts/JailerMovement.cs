@@ -20,7 +20,6 @@ public class JailerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pathLength = 1500f;
         pathTracker = 0f;
         speed = .005f;
         directionRight = true;
