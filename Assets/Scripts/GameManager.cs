@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public float coinCount;
+    public TextMeshProUGUI coinText;
+  
 
     private void Awake()
     {
@@ -22,6 +25,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        coinText.text = "Coins: ";
         coinCount = 0f;
     }
 
@@ -35,6 +39,8 @@ public class GameManager : MonoBehaviour
     {
         coinCount += 1;
         Debug.Log(coinCount);
+        coinText.text: "Coins:" + coinCount;
+
     }
 
 }
