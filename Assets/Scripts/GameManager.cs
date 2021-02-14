@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     {
         coinCount += 1;
         Debug.Log(coinCount);
-        coinText.text: "Coins:" + coinCount;
+        coinText.text = "Coins: " + coinCount;
 
     }
 
