@@ -92,7 +92,9 @@ public class GameManager : MonoBehaviour
     {
         startButton.SetActive(true);
         StopAllCoroutines();
-        StartCoroutine(ColorLerp(new Color(1, 1, 1, 1), 2));
+        StartCoroutine(ColorLerp(new Color(1, 1, 1, 1), .7f));
+        coinCount = 0;
+        coinText.text = "Coins: 0";
     }
 
     IEnumerator ColorLerp(Color endValue, float duration)
