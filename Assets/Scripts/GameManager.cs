@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject startButton;
     public GameObject playAgainButton;
+    public GameObject playAgainButtonVictory;
     public GameObject backgroundImage;
     public GameObject losingImage;
     public GameObject winningImage;
@@ -98,23 +99,26 @@ public class GameManager : MonoBehaviour
 
     public void PlayAgainButton()
     {
-        Debug.Log("test");
         playAgainButton.SetActive(false);
-        Debug.Log("play again");
-        // StartCoroutine(LoadYourAsyncScene("MainMenu"));
-
+        Image sprite = losingImage.GetComponent<Image>();
+        StartCoroutine(LoadYourAsyncScene("SnailWorld", sprite));
     }
 
-    
+    public void PlayAgainButtonVictory()
+    {
+        playAgainButtonVictory.SetActive(false);
+        Image sprite = winningImage.GetComponent<Image>();
+        StartCoroutine(LoadYourAsyncScene("SnailWorld", sprite));
+    }
+
+
 
     public void GameOver()
     {
-        startButton.SetActive(true);
+        StopAllCoroutines();
         playAgainButton.SetActive(true);
-        // StartCoroutine(LoadYourAsyncScene("WinScene"));
-        // StopAllCoroutines();
-        Image sprite = backgroundImage.GetComponent<Image>();
-        StartCoroutine(LoadYourAsyncScene("LosingScene", sprite));
+        losingImage.SetActive(true);
+        Image sprite = losingImage.GetComponent<Image>();
         StartCoroutine(ColorLerp(new Color(1, 1, 1, 1), .7f, sprite));
         coinCount = 0;
         coinText.text = "Coins: 0";
@@ -123,9 +127,11 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
-        playAgainButton.SetActive(true);
-        //StopAllCoroutines();
-        // StartCoroutine(LoadYourAsyncScene("WinScene"));
+        StopAllCoroutines();
+        playAgainButtonVictory.SetActive(true);
+        winningImage.SetActive(true);
+        Image sprite = winningImage.GetComponent<Image>();
+        StartCoroutine(ColorLerp(new Color(1, 1, 1, 1), .7f, sprite));
         coinCount = 0;
         coinText.text = "Coins: 0";
     }
