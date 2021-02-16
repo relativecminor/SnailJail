@@ -68,6 +68,12 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void collectKey()
+    {
+        hasKey = true;
+        Debug.Log("keyCollectedGM");
+    }
+
     public void StartDialog(string text)
     {
         dialogBox.SetActive(true);
@@ -123,6 +129,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(ColorLerp(new Color(1, 1, 1, 1), .7f, sprite));
         coinCount = 0;
         coinText.text = "Coins: 0";
+        hasKey = false;
 
     }
 
@@ -135,6 +142,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(ColorLerp(new Color(1, 1, 1, 1), .7f, sprite));
         coinCount = 0;
         coinText.text = "Coins: 0";
+        hasKey = false;
     }
 
     IEnumerator ColorLerp(Color endValue, float duration, Image sprite)

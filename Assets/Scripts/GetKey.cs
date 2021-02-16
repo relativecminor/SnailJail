@@ -15,6 +15,7 @@ public class GetKey : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Start");
         sound = GetComponent<AudioSource>();
         collide = GetComponent<PolygonCollider2D>();
         image = GetComponent<SpriteRenderer>();
@@ -26,7 +27,7 @@ public class GetKey : MonoBehaviour
 
     }
 
-    public void onTriggerEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("collision");
 
@@ -40,6 +41,7 @@ public class GetKey : MonoBehaviour
             image.enabled = false;
             Destroy(gameObject, sound.clip.length);
 
+            GameManager.Instance.collectKey();
         }
     }
 }
