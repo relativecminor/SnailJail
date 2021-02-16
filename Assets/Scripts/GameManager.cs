@@ -18,7 +18,9 @@ public class GameManager : MonoBehaviour
     private Coroutine dialogCo;
 
     public GameObject startButton;
+    public GameObject playAgainButton;
     public GameObject backgroundImage;
+    public TextMeshProUGUI startText;
 
     public GameObject canvas;
     public GameObject events;
@@ -88,13 +90,23 @@ public class GameManager : MonoBehaviour
         StartCoroutine(LoadYourAsyncScene("SnailWorld"));
     }
 
+    public void PlayAgainButton()
+    {
+        Debug.Log("test");
+        playAgainButton.SetActive(false);
+        Debug.Log("play again");
+
+    }
+
     public void GameOver()
     {
         startButton.SetActive(true);
-        StopAllCoroutines();
-        StartCoroutine(ColorLerp(new Color(1, 1, 1, 1), .7f));
+        StartCoroutine(LoadYourAsyncScene("LosingScene"));
+        // StopAllCoroutines();
+        // StartCoroutine(ColorLerp(new Color(1, 1, 1, 1), .7f));
         coinCount = 0;
         coinText.text = "Coins: 0";
+
     }
 
     IEnumerator ColorLerp(Color endValue, float duration)
