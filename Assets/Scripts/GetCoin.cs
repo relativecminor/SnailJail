@@ -8,6 +8,7 @@ public class GetCoin : MonoBehaviour
     private AudioSource sound;
     private SpriteRenderer image;
     private CircleCollider2D collide;
+    public GameObject particles;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class GetCoin : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             sound.Play();
+            particles.GetComponent<ParticleSystem>().Play();
             collide.enabled = false;
             image.enabled = false;
             Destroy(gameObject, sound.clip.length);
