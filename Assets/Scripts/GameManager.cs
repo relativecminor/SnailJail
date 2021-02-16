@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
     public GameObject startButton;
     public GameObject playAgainButton;
     public GameObject backgroundImage;
-    public TextMeshProUGUI startText;
 
     public GameObject canvas;
     public GameObject events;
@@ -58,6 +57,10 @@ public class GameManager : MonoBehaviour
         coinCount += 1;
         Debug.Log(coinCount);
         coinText.text = "Coins: " + coinCount;
+        if (coinCount == 1)
+        {
+            GameManager.Instance.Win();
+        }
 
     }
 
@@ -95,18 +98,33 @@ public class GameManager : MonoBehaviour
         Debug.Log("test");
         playAgainButton.SetActive(false);
         Debug.Log("play again");
+        StartCoroutine(LoadYourAsyncScene("MainMenu"));
 
     }
+
+    
 
     public void GameOver()
     {
         startButton.SetActive(true);
+        playAgainButton.SetActive(true);
+       // StartCoroutine(LoadYourAsyncScene("WinScene"));
         StartCoroutine(LoadYourAsyncScene("LosingScene"));
         // StopAllCoroutines();
         // StartCoroutine(ColorLerp(new Color(1, 1, 1, 1), .7f));
         coinCount = 0;
         coinText.text = "Coins: 0";
 
+    }
+
+    public void Win()
+    {
+        startButton.SetActive(true);
+        playAgainButton.SetActive(true);
+        //StopAllCoroutines();
+        StartCoroutine(LoadYourAsyncScene("WinScene"));
+        coinCount = 0;
+        coinText.text = "Coins: 0";
     }
 
     IEnumerator ColorLerp(Color endValue, float duration)
