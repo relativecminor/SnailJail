@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public GameObject startButton;
     public GameObject playAgainButton;
     public GameObject backgroundImage;
+    public GameObject losingImage;
+    public GameObject winningImage;
 
     public GameObject canvas;
     public GameObject events;
@@ -90,7 +92,8 @@ public class GameManager : MonoBehaviour
     public void StartButton()
     {
         startButton.SetActive(false);
-        StartCoroutine(LoadYourAsyncScene("SnailWorld"));
+        Image sprite = backgroundImage.GetComponent<Image>();
+        StartCoroutine(LoadYourAsyncScene("SnailWorld", sprite));
     }
 
     public void PlayAgainButton()
@@ -98,7 +101,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("test");
         playAgainButton.SetActive(false);
         Debug.Log("play again");
-        StartCoroutine(LoadYourAsyncScene("MainMenu"));
+        // StartCoroutine(LoadYourAsyncScene("MainMenu"));
 
     }
 
@@ -108,10 +111,11 @@ public class GameManager : MonoBehaviour
     {
         startButton.SetActive(true);
         playAgainButton.SetActive(true);
-       // StartCoroutine(LoadYourAsyncScene("WinScene"));
-        StartCoroutine(LoadYourAsyncScene("LosingScene"));
+        // StartCoroutine(LoadYourAsyncScene("WinScene"));
         // StopAllCoroutines();
-        // StartCoroutine(ColorLerp(new Color(1, 1, 1, 1), .7f));
+        Image sprite = backgroundImage.GetComponent<Image>();
+        StartCoroutine(LoadYourAsyncScene("LosingScene", sprite));
+        StartCoroutine(ColorLerp(new Color(1, 1, 1, 1), .7f, sprite));
         coinCount = 0;
         coinText.text = "Coins: 0";
 
@@ -119,18 +123,16 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
-        startButton.SetActive(true);
         playAgainButton.SetActive(true);
         //StopAllCoroutines();
-        StartCoroutine(LoadYourAsyncScene("WinScene"));
+        // StartCoroutine(LoadYourAsyncScene("WinScene"));
         coinCount = 0;
         coinText.text = "Coins: 0";
     }
 
-    IEnumerator ColorLerp(Color endValue, float duration)
+    IEnumerator ColorLerp(Color endValue, float duration, Image sprite)
     {
         float time = 0;
-        Image sprite = backgroundImage.GetComponent<Image>();
         Color startValue = sprite.color;
 
         while (time < duration)
@@ -142,7 +144,7 @@ public class GameManager : MonoBehaviour
         sprite.color = endValue;
     }
 
-    IEnumerator LoadYourAsyncScene(string scene)
+    IEnumerator LoadYourAsyncScene(string scene, Image sprite)
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
 
@@ -151,7 +153,7 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
-        StartCoroutine(ColorLerp(new Color(1, 1, 1, 0), 2));
+        StartCoroutine(ColorLerp(new Color(1, 1, 1, 0), 2, sprite));
     }
 
 }
