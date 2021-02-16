@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public GameObject backgroundImage;
     public GameObject losingImage;
     public GameObject winningImage;
+    public bool hasKey = false;
 
     public GameObject canvas;
     public GameObject events;
@@ -60,7 +61,7 @@ public class GameManager : MonoBehaviour
         coinCount += 1;
         Debug.Log(coinCount);
         coinText.text = "Coins: " + coinCount;
-        if (coinCount == 1)
+        if (coinCount == 5)
         {
             GameManager.Instance.Win();
         }
@@ -162,4 +163,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(ColorLerp(new Color(1, 1, 1, 0), 2, sprite));
     }
 
+ 
+
 }
+
