@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -18,6 +19,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject startButton;
     public GameObject backgroundImage;
+
+    public GameObject canvas;
+    public GameObject events;
   
 
     private void Awake()
@@ -26,6 +30,8 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(canvas);
+            DontDestroyOnLoad(events);
         } else
         {
             Destroy(gameObject);
@@ -56,6 +62,7 @@ public class GameManager : MonoBehaviour
     public void StartDialog(string text)
     {
         dialogBox.SetActive(true);
+        Debug.Log("TextStart");
         dialogCo = StartCoroutine(TypeText(text));
     }
 
@@ -78,13 +85,14 @@ public class GameManager : MonoBehaviour
     public void StartButton()
     {
         startButton.SetActive(false);
-        StartCoroutine(ColorLerp(new Color(1, 1, 1, 0), 2));
+        StartCoroutine(LoadYourAsyncScene("SnailWorld"));
     }
 
     public void GameOver()
     {
         startButton.SetActive(true);
         StopAllCoroutines();
+        StartCoroutine(ColorLerp(new Color(1, 1, 1, 1), 2));
     }
 
     IEnumerator ColorLerp(Color endValue, float duration)
@@ -100,6 +108,18 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
         sprite.color = endValue;
+    }
+
+    IEnumerator LoadYourAsyncScene(string scene)
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
+
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        StartCoroutine(ColorLerp(new Color(1, 1, 1, 0), 2));
     }
 
 }
