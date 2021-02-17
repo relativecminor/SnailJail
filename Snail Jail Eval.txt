@@ -1,0 +1,15 @@
+﻿Snail Jail Evaluation
+Cameron Minor
+Lucy Lyon
+        We hoped to create a side-scrolling game that provided moments of tension as a snail escaped from jail. We had ideas that ranged from enemies programmed to chase the player, to even having a flashlight style lighting system as the player ran in the dark. The final product ended up simpler than that as one would expect, but we hoped to carry through that initial intent of a tense escape. 
+        The  protagonist of the game is SnailGale. She is a criminal who has escaped from jail. The goal of the game is to collect 30 coins for her snail bail. We scattered snail jailers trying to catch her throughout the game. They are patrolling back and forth throughout the maze If she runs into one of them, the game is over and you have the option of restarting. In order to collect all the coins you must find the key in the maze and use it to unlock the door.         
+        We tried our best to keep the aesthetics of the game as cohesive as possible. By keeping the art style of the game pixelated and by not changing the scale of any of those pixels, we hoped to push the feeling that all the assets lived in the same world. In terms of color, we tried to start at the base of a cute snail game, and then push everything slightly darker so that it read as a criminal escape game as opposed to a happy snail game (though it is still a happy snail game). We also hoped the music reflected this change, as it went through many changes that were too bright and cheery.
+Cameron’s Joys:
+        I took it upon myself to make the art assets for this game, one because I was having a really fun time experimenting with Aseprite, and two because I felt that my making the art assets ourselves, we would have more power over what we wanted to see in the game. We wouldn’t have to rely on a criminal snail sprite existing in the world. It just happened to build from there. I had a lot of fun doing this, and think I improved along the process. I learned a lot about Hue-Shifting for shading pixel art, and learned from mistakes about how to make a good tilemap.
+Lucy’s Joys:
+I loved the concept of the game and seeing the pieces get put together. This game had more complexity than the first one, so it was really satisfying seeing the final product. 
+Cameron’s Struggles:
+        I don’t feel like I ever quite perfectly determined when an Enter2DCollision would activate on an object’s script and when it wouldn’t. Sometimes it would work with dynamic objects, sometimes not. It felt like we would do something that would work, have little idea why, and then be unable to recreate it later. Our signs, doors, and coins all operate in slightly different ways, even though their intent is so similar.
+Lucy’s Struggles:
+        My Visual Studio would not properly function for a majority of this lab. It was extremely frustrating not being able to contribute as much as I would have liked because every time I wrote code, Unity wouldn’t recognize it. Because of this, everything I wrote threw an error, even if it was correct. 
+Attributions: All art, music, and sound effects created by Cameron Minor.
