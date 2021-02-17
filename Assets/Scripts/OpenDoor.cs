@@ -5,11 +5,13 @@ using UnityEngine;
 public class OpenDoor : MonoBehaviour
 {
 
+    private AudioSource sound;
+
     public PolygonCollider2D collide;
     // Start is called before the first frame update
     void Start()
     {
-
+        sound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -25,8 +27,12 @@ public class OpenDoor : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
-            collide.enabled = false;
-            Destroy(gameObject);
+            if (GameManager.Instance.hasKey)
+            {
+                sound.Play();
+                collide.enabled = false;
+                Destroy(gameObject, sound.clip.length);
+            }
         }
     }
 }

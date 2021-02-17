@@ -47,11 +47,11 @@ public class PlayerMoves : MonoBehaviour
 
         body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
 
-        if (horizontal == -1)
+        if (horizontal < 0)
         {
             spriteRend.flipX = true;
         }
-        else if (horizontal == 1)
+        else if (horizontal > 0)
         {
             spriteRend.flipX = false;
         }
