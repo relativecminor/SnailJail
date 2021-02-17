@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         coinCount += 1;
         Debug.Log(coinCount);
         coinText.text = "Coins: " + coinCount;
-        if (coinCount == 5)
+        if (coinCount == 30)
         {
             GameManager.Instance.Win();
         }
