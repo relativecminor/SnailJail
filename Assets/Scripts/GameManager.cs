@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("keyCollectedGM");
     }
 
+
     public void StartDialog(string text)
     {
         dialogBox.SetActive(true);
